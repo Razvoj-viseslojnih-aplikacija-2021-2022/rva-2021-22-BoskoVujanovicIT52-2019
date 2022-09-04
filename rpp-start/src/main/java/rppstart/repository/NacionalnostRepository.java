@@ -1,13 +1,14 @@
-package rva.repository;
+package rppstart.repository;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import rva.jpa.Nacionalnost;
+import rppstart.jpa.Nacionalnost;
 
-public interface NacionalnostRepository extends JpaRepository<Nacionalnost, Integer>{
 
+public interface NacionalnostRepository extends JpaRepository<Nacionalnost, Integer> {
+	
 	Collection<Nacionalnost> findByNazivContainingIgnoreCase(String naziv);
 
 }

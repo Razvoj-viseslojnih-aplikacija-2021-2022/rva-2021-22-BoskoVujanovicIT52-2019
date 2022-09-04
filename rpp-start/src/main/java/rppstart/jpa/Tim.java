@@ -1,4 +1,4 @@
-package rva.jpa;
+package rppstart.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
