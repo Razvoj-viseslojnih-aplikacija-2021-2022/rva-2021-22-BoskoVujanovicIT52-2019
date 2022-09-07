@@ -3,8 +3,8 @@ values
 (nextval('Nacionalnost_seq'),'Srpska', 'SRB'),
 (nextval('Nacionalnost_seq'),'Ruska', 'RUS'),
 (nextval('Nacionalnost_seq'),'Italijanska', 'ITL'),
-(nextval('Nacionalnost_seq'),'Španska', 'ESP'),
-(nextval('Nacionalnost_seq'),'Grčka', 'HEL');
+(nextval('Nacionalnost_seq'),'Å panska', 'ESP'),
+(nextval('Nacionalnost_seq'),'GrÄ�ka', 'HEL');
 
 INSERT into Liga
 values
@@ -40,10 +40,6 @@ values (nextval('tim_seq'), 'Crvena Zvezda', '1890-01-02', 'Bulevar Oslobodjenja
 (nextval('tim_seq'), 'Olimpijakos', '1970-06-18', 'Brkatog Cike 12', 9),
 (nextval('tim_seq'), 'Diagoras', '1780-09-19', 'Perikleova 2', 10),
 (nextval('tim_seq'), 'Karditsa', '1980-02-22', 'Kirilova 17', 10);
-
-select * from tim;
-
-select * from liga;
 
 INSERT into igrac(id, ime, prezime, broj_registracije, datum_rodjenja, nacionalnost, tim)
 values 

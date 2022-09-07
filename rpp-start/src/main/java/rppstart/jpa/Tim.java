@@ -2,6 +2,10 @@ package rppstart.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +14,8 @@ import java.util.List;
  * The persistent class for the tim database table.
  * 
  */
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+
 @Entity
 @NamedQuery(name="Tim.findAll", query="SELECT t FROM Tim t")
 public class Tim implements Serializable {
@@ -28,7 +34,8 @@ public class Tim implements Serializable {
 	private String sediste;
 
 	//bi-directional many-to-one association to Igrac
-	@OneToMany(mappedBy="tim")
+	@JsonIgnore
+	@OneToMany(mappedBy="tim", cascade= {CascadeType.DETACH, CascadeType.REMOVE})
 	private List<Igrac> igracs;
 
 	//bi-directional many-to-one association to Liga

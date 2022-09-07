@@ -12,8 +12,7 @@ import java.util.Date;
  * The persistent class for the igrac database table.
  * 
  */
-@JsonIgnoreProperties({"hybernateLazyIniatializer","handler"})
-
+@JsonIgnoreProperties({"hibernateLazyIniatializer","handler"})
 @Entity
 @NamedQuery(name="Igrac.findAll", query="SELECT i FROM Igrac i")
 public class Igrac implements Serializable {

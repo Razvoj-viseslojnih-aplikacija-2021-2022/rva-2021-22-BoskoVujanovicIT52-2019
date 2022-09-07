@@ -3,11 +3,9 @@ package rppstart.ctrls;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +20,9 @@ import rppstart.jpa.Tim;
 import rppstart.repository.IgracRepository;
 import rppstart.repository.TimRepository;
 
-@Component
+
 @CrossOrigin
 @RestController
-@ComponentScan
 public class IgracRestController {
 	
 	@Autowired
@@ -37,7 +34,7 @@ public class IgracRestController {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	@GetMapping("igrac")
+	@GetMapping("/igrac")
 	public Collection<Igrac> getIgraci() {
 		return igracRepository.findAll();
 	}
