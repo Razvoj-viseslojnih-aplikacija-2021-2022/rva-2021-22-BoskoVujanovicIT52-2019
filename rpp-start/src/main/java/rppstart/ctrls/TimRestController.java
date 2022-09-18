@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import rppstart.jpa.Tim;
 import rppstart.repository.TimRepository;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
 @RestController
+@Api(tags = {"Tim CRUD operacije"})
 public class TimRestController {
 	
 	@Autowired
@@ -30,21 +33,25 @@ public class TimRestController {
 	private JdbcTemplate jdbcTemplate;
 
 	@GetMapping("tim")
+	@ApiOperation(value = "Vraća kolekciju svih timova iz baze podataka")
 	public Collection<Tim> getTimove() {
 		return timRepository.findAll();
 	}
 
 	@GetMapping("tim/{id}")
+	@ApiOperation(value = "Vraća tim iz baze podataka čija je id vrednost prosleđena kao path varijabla")
 	public Tim getTim(@PathVariable("id") Integer id) {
 		return timRepository.getOne(id);
 	}
 	
 	@GetMapping("timNaziv/{naziv}")
+	@ApiOperation(value = "Vraća kolekciju svih timova iz baze podataka koji u nazivu sadrže string prosleđen kao path varijabla")
 	public Collection<Tim> getTimById(@PathVariable("naziv") String naziv) {
 		return timRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
 	@PostMapping("tim")
+	@ApiOperation(value = "Upisuje tim u bazu podataka")
 	public ResponseEntity<Tim> insertTim(@RequestBody Tim tim) {
 		if (!timRepository.existsById(tim.getId())) {
 			timRepository.save(tim);
@@ -54,6 +61,7 @@ public class TimRestController {
 	}
 	
 	@PutMapping("tim")
+	@ApiOperation(value = "Modifikuje postojeći tim u bazi podataka")
 	public ResponseEntity<Tim> updateTim(@RequestBody Tim tim) {
 		if (timRepository.existsById(tim.getId())) {
 			timRepository.save(tim);
@@ -63,6 +71,7 @@ public class TimRestController {
 	}
 	
 	@DeleteMapping("tim/{id}")
+	@ApiOperation(value = "Briše tim iz baze podataka čiji je id vrednost prosleđena kao path varijabla")
 	public ResponseEntity<Tim> deleteTim(@PathVariable("id") Integer id) {
 		if(timRepository.existsById(id)) {
 			timRepository.deleteById(id);
